@@ -24,7 +24,7 @@ function init() {
 
 	//(width, height, widthSegments, heightSegments);
 	const floorGeometry = new THREE.PlaneGeometry(100, 100, 1, 1);
-	const floorTexture = new THREE.TextureLoader().load("/textures/arcade_carpet_512.png")
+	const floorTexture = new THREE.TextureLoader().load("/textures/carpet.jpg")
 	floorTexture.wrapS = THREE.RepeatWrapping;
 	floorTexture.wrapT = THREE.RepeatWrapping;
 	floorTexture.repeat.x = 50;
