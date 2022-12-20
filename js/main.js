@@ -22,15 +22,27 @@ function init() {
 	const texture = new THREE.TextureLoader().load("/textures/moon_1024.jpg")
 	const material = new THREE.MeshBasicMaterial({ map: texture })
 
-	//(width, height, widthSegments, heightSegments);
-	const floorGeometry = new THREE.PlaneGeometry(100, 100, 1, 1);
-	const floorTexture = new THREE.TextureLoader().load("/textures/carpet.jpg")
+	const floorGeometry = new THREE.PlaneGeometry(50, 50, 1, 1);
+	const floorTexture = new THREE.TextureLoader().load("/textures/portal-floor.jpg")
 	floorTexture.wrapS = THREE.RepeatWrapping;
 	floorTexture.wrapT = THREE.RepeatWrapping;
-	floorTexture.repeat.x = 50;
-	floorTexture.repeat.y = 50;
+	floorTexture.repeat.x = 25;
+	floorTexture.repeat.y = 25;
 	const floorMaterial = new THREE.MeshBasicMaterial({ map: floorTexture, side: THREE.DoubleSide })
 	const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+
+	const wallGeometry = new THREE.BoxGeometry(50, 50, 1);
+	const wallTexture = new THREE.TextureLoader().load("/textures/portal-wall.jpg")
+	wallTexture.wrapS = THREE.RepeatWrapping;
+	wallTexture.wrapT = THREE.RepeatWrapping;
+	wallTexture.repeat.x = 10;
+	wallTexture.repeat.y = 10;
+	const wallMaterial = new THREE.MeshBasicMaterial({ map: wallTexture });
+	const wall1 = new THREE.Mesh(wallGeometry, wallMaterial)
+	const wall2 = new THREE.Mesh(wallGeometry, wallMaterial)
+	const wall3 = new THREE.Mesh(wallGeometry, wallMaterial)
+	const wall4 = new THREE.Mesh(wallGeometry, wallMaterial)
+	const ceiling = new THREE.Mesh(wallGeometry, wallMaterial)
 
 	cube = new THREE.Mesh(geometry, material)
     cube2 = new THREE.Mesh(geometry, material)
@@ -38,8 +50,28 @@ function init() {
     scene.add(cube2)
 	scene.add(floor)
 
+	scene.add(wall1)
+	scene.add(wall2)
+	scene.add(wall3)
+	scene.add(wall4)
+
+	scene.add(ceiling)
+
     cube.position.x = 3
     cube2.position.x = -3
+
+	wall1.position.set(25,22,0)
+	wall1.rotation.y = Math.PI / 2;
+
+	wall2.position.set(-25,22,0)
+	wall2.rotation.y = Math.PI / 2;
+
+	wall3.position.set(0,22,25)
+
+	wall4.position.set(0,22,-25)
+
+	ceiling.position.set(0,48,0)
+	ceiling.rotation.x = Math.PI / 2;
 
 	floor.rotation.x = Math.PI / 2;
 
